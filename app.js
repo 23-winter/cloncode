@@ -11,7 +11,10 @@ const dburl = require('./secret/secret.json')
 app.use(express.json());
 
 app.use('/auth', auth);
-
+app.post('/test', (req, res, next) =>{
+    console.log('test request')
+    res.json({message : "test success"});
+})
 mongoose.connect(dburl.dburl, {dbName: "Clon"})
 .then(() =>{
     app.listen(port);
